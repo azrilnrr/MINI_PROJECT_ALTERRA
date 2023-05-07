@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:nilangsis_mini_project_alterra/view/detail_pelanggaran_screen.dart';
-import 'package:nilangsis_mini_project_alterra/view/tambah_data_screen.dart';
-import 'package:nilangsis_mini_project_alterra/view_model/data_pelanggaran_provider.dart';
-import 'package:nilangsis_mini_project_alterra/widget/card_pelanggaran.dart';
+import 'package:nilangsis_mini_project_alterra/view_model/data_siswa_provider.dart';
+import 'package:nilangsis_mini_project_alterra/widget/card_siswa.dart';
 import 'package:nilangsis_mini_project_alterra/widget/theme.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+class DataSiswaScreen extends StatefulWidget {
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DataSiswaScreen> createState() => _DataSiswaScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DataSiswaScreenState extends State<DataSiswaScreen> {
   @override
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<DataPelanggaranProvider>(context, listen: false)
-            .getAllDataPelanggaran());
+        Provider.of<DataSiswaProvider>(context, listen: false)
+            .getAllDataSiswa());
   }
 
   @override
@@ -29,34 +25,28 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Text(
-          'NILANGSIS',
+          'DATA SISWA',
           style: robotoBesarPutih.copyWith(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
-      body: Consumer<DataPelanggaranProvider>(
+      body: Consumer<DataSiswaProvider>(
         builder: (context, prov, child) {
           if (prov.requestState == RequestState.loading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (prov.requestState == RequestState.loaded) {
-            final dp = prov.dataPelanggarans;
+            final dp = prov.datasiswa;
             return ListView.builder(
               itemCount: dp.length,
               itemBuilder: (BuildContext context, int index) {
                 final data = dp[index];
                 return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailPelanggaranScreen(
-                                dataPelanggaran: data)));
-                  },
+                  onTap: () {},
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: CardPelanggaran(data: data),
+                    child: CardSiswa(data: data),
                   ),
                 );
               },
@@ -67,15 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
             return const Text('Unknown error');
           }
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => TambahData()));
-        },
-        label: const Text('TAMBAH'),
-        icon: const Icon(Icons.add),
-        backgroundColor: primaryColor,
       ),
     );
   }

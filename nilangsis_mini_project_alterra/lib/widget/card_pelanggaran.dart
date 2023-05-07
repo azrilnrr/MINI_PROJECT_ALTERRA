@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nilangsis_mini_project_alterra/model/data_pelanggaran.dart';
 import 'package:nilangsis_mini_project_alterra/widget/theme.dart';
 
 class CardPelanggaran extends StatelessWidget {
-  const CardPelanggaran({Key? key}) : super(key: key);
+  const CardPelanggaran({Key? key, required this.data}) : super(key: key);
+
+  final DataPelanggaran data;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +20,7 @@ class CardPelanggaran extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 50,
-                child: Text('NAMA : ',
+                child: Text('Nama : ${data.namaSiswa}',
                     style:
                         robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
               ),
@@ -29,8 +31,7 @@ class CardPelanggaran extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 50,
-                child: Text('KELAS : ',
+                child: Text('Kelas : ${data.kelas}',
                     style:
                         robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
               ),
@@ -41,8 +42,7 @@ class CardPelanggaran extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 120,
-                child: Text('PELANGGARAN : ',
+                child: Text('Nama Pelanggaran : ${data.namaPelanggaran}',
                     style:
                         robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
               ),
@@ -53,13 +53,13 @@ class CardPelanggaran extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 100,
-                child: Text('TANGGAL : ',
+                child: Text('Tanggal : ${data.tanggalKejadian}',
                     style:
                         robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
               ),
             ],
           ),
+          SizedBox(height: 10),
         ],
       ),
     );

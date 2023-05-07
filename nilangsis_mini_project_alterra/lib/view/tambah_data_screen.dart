@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nilangsis_mini_project_alterra/view/data_siswa_screen.dart';
 import 'package:nilangsis_mini_project_alterra/widget/theme.dart';
 
 class TambahData extends StatefulWidget {
@@ -59,11 +60,19 @@ class _TambahDataState extends State<TambahData> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 20),
-                      Text(
-                        'PILIH',
-                        style: robotoSedangHitam.copyWith(
-                            fontWeight: FontWeight.bold),
+                      SizedBox(width: 5),
+                      TextButton(
+                        child: Text(
+                          'PILIH',
+                          style: robotoSedangHitam.copyWith(
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DataSiswaScreen()));
+                        },
                       )
                     ],
                   ),
