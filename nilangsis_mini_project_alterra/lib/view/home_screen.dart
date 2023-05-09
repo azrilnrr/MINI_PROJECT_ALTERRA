@@ -42,27 +42,32 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           } else if (prov.requestState == RequestState.loaded) {
             final dp = prov.dataPelanggarans;
-            return ListView.builder(
-              itemCount: dp.length,
-              itemBuilder: (BuildContext context, int index) {
-                final data = dp[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
+            return RefreshIndicator(
+              onRefresh: () => prov.getAllDataPelanggaran(),
+              child: ListView.builder(
+                itemCount: dp.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final data = dp[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DetailPelanggaranScreen(
-                                dataPelanggaran: data)));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: CardPelanggaran(data: data),
-                  ),
-                );
-              },
+                          builder: (context) =>
+                              DetailPelanggaranScreen(dataPelanggaran: data),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CardPelanggaran(data: data),
+                    ),
+                  );
+                },
+              ),
             );
           } else if (prov.requestState == RequestState.error) {
-            return Text(prov.message);
+            return Center(child: Text(prov.message));
           } else {
             return const Text('Unknown error');
           }

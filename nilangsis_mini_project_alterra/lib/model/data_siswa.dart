@@ -11,7 +11,8 @@ class DataSiswa {
     required this.kelas,
   });
 
-  factory DataSiswa.fromRawJson(String str) => DataSiswa.fromJson(json.decode(str));
+  factory DataSiswa.fromRawJson(String str) =>
+      DataSiswa.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 

@@ -53,7 +53,8 @@ class CardPelanggaran extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                child: Text('Tanggal : ${data.tanggalKejadian}',
+                child: Text(
+                    'Tanggal : ${data.tanggalKejadian!.substring(0, 10)}',
                     style:
                         robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
               ),

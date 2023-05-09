@@ -28,7 +28,7 @@ class DetailPelanggaranScreen extends StatelessWidget {
             width: 330,
           ),
           Text(
-            'Tanggal : ${dataPelanggaran!.tanggalKejadian}',
+            'Tanggal : ${dataPelanggaran!.tanggalKejadian!.substring(0, 10)}',
             style: robotoBesarHitam,
           ),
           SizedBox(height: 10),

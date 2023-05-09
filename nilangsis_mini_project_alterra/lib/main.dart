@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nilangsis_mini_project_alterra/routes/routes.dart';
 import 'package:nilangsis_mini_project_alterra/view/home_screen.dart';
 import 'package:nilangsis_mini_project_alterra/view_model/data_pelanggaran_provider.dart';
 import 'package:nilangsis_mini_project_alterra/view_model/data_siswa_provider.dart';
@@ -23,7 +24,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'nilangsis',
-        home: HomeScreen(),
+        // home: HomeScreen(),
+        // initialRoute: AppRoutes.home,
+        routes: {
+          AppRoutes.home: (context) => const HomeScreen(),
+        },
       ),
     );
   }

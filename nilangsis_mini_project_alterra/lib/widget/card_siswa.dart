@@ -23,39 +23,14 @@ class CardSiswa extends StatelessWidget {
           ),
         ),
         title: Text(
-          data.namaSiswa,
+          'Nama : ${data.namaSiswa}',
           style: robotoBesarHitam,
         ),
         subtitle: Text(
-          data.kelas,
+          'Kelas : ${data.kelas}',
           style: robotoSedangHitam,
         ),
       ),
-      // child: Column(
-      //   children: [
-      //     Row(
-      //       crossAxisAlignment: CrossAxisAlignment.start,
-      //       children: [
-      //         SizedBox(
-      //           child: Text('Nama : ${data.namaSiswa}',
-      //               style:
-      //                   robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
-      //         ),
-      //       ],
-      //     ),
-      //     SizedBox(height: 10),
-      //     Row(
-      //       crossAxisAlignment: CrossAxisAlignment.start,
-      //       children: [
-      //         SizedBox(
-      //           child: Text('Kelas : ${data.kelas}',
-      //               style:
-      //                   robotoKecilHitam.copyWith(fontWeight: FontWeight.bold)),
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

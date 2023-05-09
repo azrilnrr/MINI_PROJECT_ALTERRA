@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nilangsis_mini_project_alterra/routes/routes.dart';
+import 'package:nilangsis_mini_project_alterra/view/tambah_data_screen.dart';
 import 'package:nilangsis_mini_project_alterra/view_model/data_siswa_provider.dart';
 import 'package:nilangsis_mini_project_alterra/widget/card_siswa.dart';
 import 'package:nilangsis_mini_project_alterra/widget/theme.dart';
@@ -43,7 +45,13 @@ class _DataSiswaScreenState extends State<DataSiswaScreen> {
               itemBuilder: (BuildContext context, int index) {
                 final data = dp[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TambahData(dataSiswa: data)),
+                        ModalRoute.withName(AppRoutes.home));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: CardSiswa(data: data),
