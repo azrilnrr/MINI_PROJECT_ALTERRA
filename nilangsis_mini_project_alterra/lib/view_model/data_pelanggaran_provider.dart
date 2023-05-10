@@ -37,22 +37,6 @@ class DataPelanggaranProvider extends ChangeNotifier {
     }
   }
 
-  // Future<void> getSingleDataPelanggaran(String id) async {
-  //   _requestState = RequestState.loading;
-  //   notifyListeners();
-  //   try {
-  //     final result = await DataApi.getDataPelanggaranById(id);
-  //     _dataPelanggaran = result;
-  //     print('Result: $result');
-  //     _requestState = RequestState.loaded;
-  //     notifyListeners();
-  //   } catch (e) {
-  //     _requestState = RequestState.error;
-  //     _message = 'data tidak terambil: $e';
-  //     notifyListeners();
-  //   }
-  // }
-
   Future<void> tambahData(
       String namaSiswa,
       String kelas,

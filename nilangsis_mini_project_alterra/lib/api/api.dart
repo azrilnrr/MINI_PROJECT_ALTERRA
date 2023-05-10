@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:nilangsis_mini_project_alterra/model/data_siswa.dart';
 
 class DataApi {
-  static const baseUrl = 'http://192.168.1.3:8080/mp_nilangsis';
+  static const baseUrl = 'http://192.168.1.11:8080/mp_nilangsis';
   static const dataPelanggaran = '/tampil-data-pelanggaran.php';
   static const tambahDataPelanggaran = '/insert-pelanggaran-siswa.php';
-  static const imgAssets = 'http://192.168.1.3:8080/mp_nilangsis/assets/';
+  static const imgAssets = 'http://192.168.1.11:8080/mp_nilangsis/assets/';
   static const dataSiswa = '/tampil-siswa.php';
 
   static Future<List<DataPelanggaran>> getDataPelanggaran() async {
@@ -48,18 +48,6 @@ class DataApi {
     }
   }
 
-  // static Future<DataPelanggaran> getDataPelanggaranById(String id) async {
-  //   final response = await http.get(Uri.parse('$baseUrl$dataPelanggaran/$id'));
-  //   if (response.statusCode == 200) {
-  //     final dynamic body = jsonDecode(response.body);
-  //     print('Body: $body');
-  //     final DataPelanggaran product = DataPelanggaran.fromJson(body);
-  //     return product;
-  //   } else {
-  //     throw "Can't get the data";
-  //   }
-  // }
-
   // data siswa api
   static Future<List<DataSiswa>> getDataSiswa() async {
     final response = await http.get(Uri.parse('$baseUrl$dataSiswa'));
@@ -67,8 +55,6 @@ class DataApi {
     if (response.statusCode == 200) {
       Map body = jsonDecode(response.body);
       List dataSiswa = body['data'];
-      // final List<DataPelanggaran> dataSiswa =
-      //     body.map((e) => DataPelanggaran.fromJson(e)).toList();
       return dataSiswa.map((e) => DataSiswa.fromJson(e)).toList();
     } else {
       throw 'Gagal mengambil data';

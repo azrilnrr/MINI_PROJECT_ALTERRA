@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:nilangsis_mini_project_alterra/routes/routes.dart';
 import 'package:nilangsis_mini_project_alterra/view/home_screen.dart';
 import 'package:nilangsis_mini_project_alterra/view_model/data_pelanggaran_provider.dart';
@@ -6,15 +7,9 @@ import 'package:nilangsis_mini_project_alterra/view_model/data_siswa_provider.da
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
+  testWidgets('Judul halaman harus NILANGSIS', (WidgetTester tester) async {
+    //testing judul
+    await tester.pumpWidget(MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (context) => DataPelanggaranProvider(),
@@ -22,14 +17,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => DataSiswaProvider())
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'nilangsis',
-        // home: HomeScreen(),
-        // initialRoute: AppRoutes.home,
         routes: {
           AppRoutes.home: (context) => const HomeScreen(),
         },
       ),
-    );
-  }
+    ));
+
+    expect(find.text('NILANGSIS'), findsOneWidget);
+  });
 }
