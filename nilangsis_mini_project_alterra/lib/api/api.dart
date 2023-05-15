@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:nilangsis_mini_project_alterra/model/data_siswa.dart';
 
 class DataApi {
-  static const baseUrl = 'http://192.168.1.11:8080/mp_nilangsis';
+  static const baseUrl = 'http://192.168.1.5:8080/mp_nilangsis';
   static const dataPelanggaran = '/tampil-data-pelanggaran.php';
   static const tambahDataPelanggaran = '/insert-pelanggaran-siswa.php';
-  static const imgAssets = 'http://192.168.1.11:8080/mp_nilangsis/assets/';
+  static const imgAssets = 'http://192.168.1.5:8080/mp_nilangsis/assets/';
   static const dataSiswa = '/tampil-siswa.php';
 
   static Future<List<DataPelanggaran>> getDataPelanggaran() async {
